@@ -1,8 +1,11 @@
 import 'dart:convert';
  
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shortly_app/data/local/prefs/user_model.dart'; 
  
+
+ @singleton
 class SharedPrefrencesManager {
   static const String USER_FILED = "USER_FILED";
 

@@ -15,6 +15,6 @@ abstract class StorageModule {
 
   @preResolve
   Future<SharedPreferences> provideSharedPreferences() async {
-    return SharedPreferences.getInstance();
+    return await SharedPreferences.getInstance();
   }
 }

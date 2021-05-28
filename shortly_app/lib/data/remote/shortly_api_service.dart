@@ -5,7 +5,7 @@ part 'shortly_api_service.g.dart';
 
 @RestApi(baseUrl: "https://api.shrtco.de/v2")
 abstract class ShortlyApiService {
-  factory ShortlyApiService(Dio dio, {String baseUrl}) = _ShortlyApiService;
+  factory ShortlyApiService(Dio dio) = _ShortlyApiService;
 
   @GET("/shorten")
   Future<HttpResponse<ShortenUrlResponse>> shortenLink(

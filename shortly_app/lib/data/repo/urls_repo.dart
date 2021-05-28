@@ -16,8 +16,7 @@ abstract class UrlsRepository {
 
 
 @Singleton(
-    as: UrlsRepository,
-    env: [Env.prod])
+    as: UrlsRepository)
 class UrlsRepositoryImpl extends UrlsRepository {
   final ShortlyApiService apiService;
   final UrlsDao urlsDao;

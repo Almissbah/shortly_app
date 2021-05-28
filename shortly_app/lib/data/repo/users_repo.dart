@@ -10,21 +10,21 @@ abstract class UsersRepository {
   Future<Resource> storeUser(User user);
 }
 
-@Singleton(as: UsersRepository, env: [Env.prod])
+@LazySingleton(as: UsersRepository, env: [Env.prod])
 class UsersRepoImpl extends UsersRepository {
-  final SharedPrefrencesManager _sharedPrefrencesManager;
+  final SharedPrefrencesManager sharedPrefrencesManager;
 
-  UsersRepoImpl(this._sharedPrefrencesManager);
+  UsersRepoImpl(this.sharedPrefrencesManager);
 
   @override
   Future<Resource<User>> getUser() async {
-    var user = await _sharedPrefrencesManager.getStoredUser();
+    var user = await sharedPrefrencesManager.getStoredUser();
     return SuccessResource(user);
   }
 
   @override
   Future<Resource> storeUser(User user) async {
-    await _sharedPrefrencesManager.storeUser(user);
+    await sharedPrefrencesManager.storeUser(user);
     return SuccessResource(user);
   }
 }
