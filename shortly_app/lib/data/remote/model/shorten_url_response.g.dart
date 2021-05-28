@@ -29,10 +29,13 @@ UrlData _$UrlDataFromJson(Map<String, dynamic> json) {
     json['share_link'] as String,
     json['full_share_link'] as String,
     json['original_link'] as String,
-  )..code = json['code'] as String;
+    json['id'] as int,
+    json['code'] as String,
+  );
 }
 
 Map<String, dynamic> _$UrlDataToJson(UrlData instance) => <String, dynamic>{
+      'id': instance.id,
       'code': instance.code,
       'short_link': instance.shortLink,
       'full_short_link': instance.fullShortLink,

@@ -1,3 +1,4 @@
+import 'package:floor/floor.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'shorten_url_response.g.dart';
@@ -16,9 +17,12 @@ class ShortenUrlResponse {
   Map<String, dynamic> toJson() => _$ShortenUrlResponseToJson(this);
 }
 
+@entity
 @JsonSerializable()
 class UrlData {
-  String code;
+  @primaryKey
+  final int id;
+  final String code;
   @JsonKey(name: 'short_link')
   final String shortLink;
   @JsonKey(name: 'full_short_link')
@@ -41,7 +45,7 @@ class UrlData {
     this.fullShortLink2,
     this.shareLink,
     this.fullShareLink,
-    this.originalLink,
+    this.originalLink,this.id,this.code
   );
 
   factory UrlData.fromJson(Map<String, dynamic> json) =>
