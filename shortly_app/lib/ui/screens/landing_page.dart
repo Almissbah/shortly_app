@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shortly_app/bloc/user/user_bloc.dart';
 import 'package:shortly_app/gen/assets.gen.dart';
 import 'package:shortly_app/ui/screens/intro_page.dart';
+import 'package:shortly_app/ui/screens/shorter_page.dart';
 import 'package:shortly_app/ui/widgets/app_button.dart';
 import 'package:shortly_app/ui/widgets/app_svg_image.dart';
 import 'package:shortly_app/ui/widgets/app_text.dart';
@@ -32,9 +33,8 @@ class _LandingPageState extends State<LandingPage> {
       body: BlocListener<UserBloc, UserState>(
         listener: (context, state) { 
           if(state is OldUserState){
-            Navigator.pushNamed(context, IntroPage.routeName);
-          }
-         else _userBloc.setOldUserStatus();
+            Navigator.pushNamed(context, ShorterPage.routeName);
+          } 
         },
         child: _buildBody(context),
       ),
@@ -45,7 +45,7 @@ class _LandingPageState extends State<LandingPage> {
     return SafeArea(
       child: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
                 child: Padding(
