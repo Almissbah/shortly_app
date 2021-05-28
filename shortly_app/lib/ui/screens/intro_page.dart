@@ -34,7 +34,7 @@ UserBloc _userBloc;
         child: Container(
           width: MediaQuery.of(context).size.width,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
@@ -46,7 +46,10 @@ UserBloc _userBloc;
               InkWell(onTap: (){
                 _userBloc.setOldUserStatus();
                 Navigator.pushReplacementNamed(context, ShorterPage.routeName);
-              },child: AppText("Skip"))
+              },child: Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: AppText("Skip"),
+              ))
             ],
           ),
         ),

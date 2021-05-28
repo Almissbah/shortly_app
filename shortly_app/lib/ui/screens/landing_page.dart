@@ -23,18 +23,19 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   void initState() {
-    _userBloc=BlocProvider.of<UserBloc>(context);
+    _userBloc = BlocProvider.of<UserBloc>(context);
     _userBloc.getUserStatus();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocListener<UserBloc, UserState>(
-        listener: (context, state) { 
-          if(state is OldUserState){
+        listener: (context, state) {
+          if (state is OldUserState) {
             Navigator.pushReplacementNamed(context, ShorterPage.routeName);
-          } 
+          }
         },
         child: _buildBody(context),
       ),
@@ -43,56 +44,69 @@ class _LandingPageState extends State<LandingPage> {
 
   SafeArea _buildBody(BuildContext context) {
     return SafeArea(
-      child: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-                child: Padding(
-              padding: const EdgeInsetsDirectional.only(top: 40),
-              child: AppSvgImage(imagePath: Assets.images.logo),
-            )),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                    child: Padding(
-                  padding: const EdgeInsetsDirectional.only(top: 20),
-                  child: AppSvgImage(imagePath: Assets.images.illustration),
-                )),
-              ],
-            ),
-            Container(
+      child: BlocBuilder<UserBloc, UserState>(
+        builder: (context, state) {
+          if (state is FirstTimeUserState)
+            return _buildFirstTimeUI(context);
+          else
+            return Center(
+              child: Container(width: 50,height: 50,child: CircularProgressIndicator()),
+            );
+        },
+      ),
+    );
+  }
+
+  Container _buildFirstTimeUI(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: AppText(
-                  "More than just shorter links",
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline1,
-                ),
+            padding: const EdgeInsetsDirectional.only(top: 40),
+            child: AppSvgImage(imagePath: Assets.images.logo),
+          )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                  child: Padding(
+                padding: const EdgeInsetsDirectional.only(top: 20),
+                child: AppSvgImage(imagePath: Assets.images.illustration),
+              )),
+            ],
+          ),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: AppText(
+                "More than just shorter links",
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline1,
               ),
             ),
-            Container(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                child: AppText(
-                  "Build your brand's recognition and get detailed insights on how your links are performing.",
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
+          ),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              child: AppText(
+                "Build your brand's recognition and get detailed insights on how your links are performing.",
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: AppButton(
-                label: "START",onPressed: (){
-                  Navigator.pushNamed(context, IntroPage.routeName);
-                },
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 30),
+            child: AppButton(
+              label: "START",
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, IntroPage.routeName);
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
