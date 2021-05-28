@@ -26,6 +26,10 @@ class AppThemes {
                 fontSize: AppConstants.headLine3FontSize,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primaryDarkColor,
+                fontFamily: FontFamily.poppins),
+            headline4: TextStyle(
+                fontSize: AppConstants.headLine4FontSize, 
+                color: Colors.red,
                 fontFamily: FontFamily.poppins)),
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
