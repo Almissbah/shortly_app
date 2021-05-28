@@ -122,7 +122,23 @@ class _$UrlsDao extends UrlsDao {
 
   @override
   Future<List<UrlData>> findAllUrls() async {
-    return _queryAdapter.queryList('SELECT * FROM UrlData',
+    return _queryAdapter.queryList('SELECT * FROM UrlData ORDER BY id DESC',
+        mapper: (Map<String, dynamic> row) => UrlData(
+            row['shortLink'] as String,
+            row['fullShortLink'] as String,
+            row['shortLink2'] as String,
+            row['fullShortLink2'] as String,
+            row['shareLink'] as String,
+            row['fullShareLink'] as String,
+            row['originalLink'] as String,
+            row['id'] as int,
+            row['code'] as String));
+  }
+
+  @override
+  Future<UrlData> deleteUrl(int id) async {
+    return _queryAdapter.query('DELETE FROM UrlData WHERE id = ?',
+        arguments: <dynamic>[id],
         mapper: (Map<String, dynamic> row) => UrlData(
             row['shortLink'] as String,
             row['fullShortLink'] as String,
