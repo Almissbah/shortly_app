@@ -9,6 +9,6 @@ abstract class ShortlyApiService {
 
   @GET("/shorten")
   Future<HttpResponse<ShortenUrlResponse>> shortenLink(
-    @Query("url") int url,
+    @Query("url") String url,
   );
 }
