@@ -124,15 +124,15 @@ class _$UrlsDao extends UrlsDao {
   Future<List<UrlData>> findAllUrls() async {
     return _queryAdapter.queryList('SELECT * FROM UrlData ORDER BY id DESC',
         mapper: (Map<String, dynamic> row) => UrlData(
-            row['shortLink'] as String,
-            row['fullShortLink'] as String,
-            row['shortLink2'] as String,
-            row['fullShortLink2'] as String,
-            row['shareLink'] as String,
-            row['fullShareLink'] as String,
-            row['originalLink'] as String,
-            row['id'] as int,
-            row['code'] as String));
+            shortLink: row['shortLink'] as String,
+            fullShortLink: row['fullShortLink'] as String,
+            shortLink2: row['shortLink2'] as String,
+            fullShortLink2: row['fullShortLink2'] as String,
+            shareLink: row['shareLink'] as String,
+            fullShareLink: row['fullShareLink'] as String,
+            originalLink: row['originalLink'] as String,
+            id: row['id'] as int,
+            code: row['code'] as String));
   }
 
   @override
@@ -140,15 +140,15 @@ class _$UrlsDao extends UrlsDao {
     return _queryAdapter.query('DELETE FROM UrlData WHERE id = ?',
         arguments: <dynamic>[id],
         mapper: (Map<String, dynamic> row) => UrlData(
-            row['shortLink'] as String,
-            row['fullShortLink'] as String,
-            row['shortLink2'] as String,
-            row['fullShortLink2'] as String,
-            row['shareLink'] as String,
-            row['fullShareLink'] as String,
-            row['originalLink'] as String,
-            row['id'] as int,
-            row['code'] as String));
+            shortLink: row['shortLink'] as String,
+            fullShortLink: row['fullShortLink'] as String,
+            shortLink2: row['shortLink2'] as String,
+            fullShortLink2: row['fullShortLink2'] as String,
+            shareLink: row['shareLink'] as String,
+            fullShareLink: row['fullShareLink'] as String,
+            originalLink: row['originalLink'] as String,
+            id: row['id'] as int,
+            code: row['code'] as String));
   }
 
   @override

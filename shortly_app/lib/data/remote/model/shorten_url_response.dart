@@ -39,13 +39,13 @@ class UrlData {
   final String originalLink;
 
   UrlData(
-    this.shortLink,
+   { this.shortLink,
     this.fullShortLink,
     this.shortLink2,
     this.fullShortLink2,
     this.shareLink,
     this.fullShareLink,
-    this.originalLink,this.id,this.code
+    this.originalLink,this.id,this.code}
   );
 
   factory UrlData.fromJson(Map<String, dynamic> json) =>

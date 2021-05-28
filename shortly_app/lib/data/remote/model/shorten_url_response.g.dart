@@ -22,15 +22,15 @@ Map<String, dynamic> _$ShortenUrlResponseToJson(ShortenUrlResponse instance) =>
 
 UrlData _$UrlDataFromJson(Map<String, dynamic> json) {
   return UrlData(
-    json['short_link'] as String,
-    json['full_short_link'] as String,
-    json['short_link2'] as String,
-    json['full_short_link2'] as String,
-    json['share_link'] as String,
-    json['full_share_link'] as String,
-    json['original_link'] as String,
-    json['id'] as int,
-    json['code'] as String,
+    shortLink: json['short_link'] as String,
+    fullShortLink: json['full_short_link'] as String,
+    shortLink2: json['short_link2'] as String,
+    fullShortLink2: json['full_short_link2'] as String,
+    shareLink: json['share_link'] as String,
+    fullShareLink: json['full_share_link'] as String,
+    originalLink: json['original_link'] as String,
+    id: json['id'] as int,
+    code: json['code'] as String,
   );
 }
 

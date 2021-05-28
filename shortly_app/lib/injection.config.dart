@@ -21,6 +21,7 @@ import 'data/repo/users_repo.dart';
 
 /// Environment names
 const _prod = 'prod';
+const _test = 'test';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -51,7 +52,10 @@ Future<GetIt> $initGetIt(
   gh.singleton<SharedPrefrencesManager>(
       SharedPrefrencesManager(get<SharedPreferences>()));
   gh.singleton<UrlsRepository>(
-      UrlsRepositoryImpl(get<ShortlyApiService>(), get<UrlsDao>()));
+      UrlsRepositoryImpl(get<ShortlyApiService>(), get<UrlsDao>()),
+      registerFor: {_prod});
+  gh.singleton<UrlsRepository>(MockedUrlsRepo(), registerFor: {_test});
+  gh.singleton<UsersRepository>(MockedUsersRepo(), registerFor: {_test});
   return get;
 }
 

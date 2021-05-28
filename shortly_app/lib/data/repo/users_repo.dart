@@ -28,3 +28,22 @@ class UsersRepoImpl extends UsersRepository {
     return SuccessResource(user);
   }
 }
+
+
+
+@Singleton(as: UsersRepository,env: [Env.test])
+class MockedUsersRepo extends UsersRepository{
+  User currentUser=User();
+  @override
+  Future<Resource<User>> getUser() async {
+  await Future.delayed(Duration(milliseconds: 500));
+  return SuccessResource(currentUser);
+  }
+
+  @override
+  Future<Resource> storeUser(User user) async {
+   await Future.delayed(Duration(milliseconds: 500));
+   currentUser.userStatus=UserStatus.OldUser;
+  return SuccessResource(currentUser);
+  }
+}
