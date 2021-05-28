@@ -22,7 +22,8 @@ dependencies:
   flutter_svg: any
   floor:   0.17.0
   logger: any 
-
+  carousel_slider: ^3.0.0 
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
