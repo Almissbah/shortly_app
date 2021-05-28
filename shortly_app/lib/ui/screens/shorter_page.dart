@@ -197,7 +197,7 @@ class _ShorterPageState extends State<ShorterPage> {
             (state is ShortenUrlFailed)
                 ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: AppText(state.msg),
+                    child: AppText(state.msg,textAlign: TextAlign.center,),
                   )
                 : Container()
           ],
