@@ -39,12 +39,12 @@ Future<GetIt> $initGetIt(
   gh.factory<SharedPreferences>(() => resolvedSharedPreferences);
   gh.factory<ShortlyApiService>(
       () => apiModule.getShortlyApiService(get<Dio>()));
-  gh.lazySingleton<UrlBloc>(() => UrlBloc());
   final resolvedUrlsDao = await storageModule.provideUrlsDao();
   gh.factory<UrlsDao>(() => resolvedUrlsDao);
   gh.lazySingleton<UsersRepository>(
       () => UsersRepoImpl(get<SharedPrefrencesManager>()),
       registerFor: {_prod});
+  gh.lazySingleton<UrlBloc>(() => UrlBloc(get<UrlsRepository>()));
   gh.lazySingleton<UserBloc>(() => UserBloc(get<UsersRepository>()));
 
   // Eager singletons must be registered in the right order

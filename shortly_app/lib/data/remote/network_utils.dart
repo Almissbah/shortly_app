@@ -1,8 +1,10 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart'; 
+import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:shortly_app/data/remote/resource.dart';
+
+import 'model/base_error_response.dart';
 
 class RetrofitResponseHandler<T> {
   Future<Resource<T>> handle(Future<HttpResponse<T>> future) async {
@@ -19,7 +21,11 @@ class RetrofitResponseHandler<T> {
 
         resource = _handleResponse(res);
       } else if (error is TypeError) {
-      } else {}
+      } else {
+        resource = FailureResource<T, HttpError>(
+            HttpError(ResponseErrors.ConnectionError, 0),
+            "Faild to connect, Please check your connection and try again!");
+      }
     }
 
     return resource;
@@ -27,8 +33,14 @@ class RetrofitResponseHandler<T> {
 
   FailureResource<T, HttpError> _handleResponse(Response res) {
     FailureResource failureResource;
+    BaseErrorResponse baseResponse;
+    try {
+      baseResponse = BaseErrorResponse.fromJson(res.data);
+    } catch (e) {
+      baseResponse = BaseErrorResponse("Unknown Error !");
+    }
     failureResource = FailureResource<T, HttpError>(
-        HttpError(ResponseErrors.ApiError, res.statusCode), "");
+        HttpError(ResponseErrors.ApiError, res.statusCode), baseResponse.error);
     return failureResource;
   }
 }
