@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'app.dart';
 import 'injection.dart';
 
-Future<void> main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies(Env.prod);
-  await Future.delayed(Duration(seconds: 1));
+  configureDependencies(Env.test);
   runApp(MyApp());
 }
