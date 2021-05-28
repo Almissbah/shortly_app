@@ -33,7 +33,7 @@ class _LandingPageState extends State<LandingPage> {
       body: BlocListener<UserBloc, UserState>(
         listener: (context, state) { 
           if(state is OldUserState){
-            Navigator.pushNamed(context, ShorterPage.routeName);
+            Navigator.pushReplacementNamed(context, ShorterPage.routeName);
           } 
         },
         child: _buildBody(context),

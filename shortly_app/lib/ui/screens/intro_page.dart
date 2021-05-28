@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shortly_app/bloc/user/user_bloc.dart';
 import 'package:shortly_app/gen/assets.gen.dart';
 import 'package:shortly_app/ui/screens/shorter_page.dart';
 import 'package:shortly_app/ui/widgets/app_svg_image.dart';
@@ -18,6 +20,12 @@ class IntroPage extends StatefulWidget {
 
 class _IntroPageState extends State<IntroPage> {
   int _current = 0;
+UserBloc _userBloc;
+  @override
+  void initState() {
+  _userBloc=BlocProvider.of<UserBloc>(context);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +44,8 @@ class _IntroPageState extends State<IntroPage> {
               )),
               _buildSlider(),
               InkWell(onTap: (){
-                Navigator.pushNamed(context, ShorterPage.routeName);
+                _userBloc.setOldUserStatus();
+                Navigator.pushReplacementNamed(context, ShorterPage.routeName);
               },child: AppText("Skip"))
             ],
           ),
