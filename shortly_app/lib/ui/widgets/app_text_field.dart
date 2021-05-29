@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shortly_app/generated/locale_keys.g.dart';
 import 'package:shortly_app/ui/widgets/app_text.dart';
 import 'package:shortly_app/utils/test_keys.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class AppTextField extends StatefulWidget {
   final TextEditingController controller;
   final bool enabled;
@@ -59,7 +60,7 @@ class AppTextFieldState extends State<AppTextField> {
                 height: 60,
                 child: Center(
                     child: AppText(
-                  "Please add a link here",
+                  LocaleKeys.shorter_screen_plz_add_linke_here.tr(),
                   style: Theme.of(context).textTheme.headline4,
                   key: Key(TestKeys.EMPTY_TEXT_FIELD_KEY),
                 )),

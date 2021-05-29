@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shortly_app/bloc/user/user_bloc.dart';
 import 'package:shortly_app/gen/assets.gen.dart';
+import 'package:shortly_app/generated/locale_keys.g.dart';
 import 'package:shortly_app/ui/screens/shorter_page.dart';
 import 'package:shortly_app/ui/widgets/app_svg_image.dart';
 import 'package:shortly_app/ui/widgets/app_text.dart';
 import 'package:shortly_app/utils/app_colors.dart';
 import 'package:shortly_app/utils/slider_items_generater.dart';
 import 'package:shortly_app/utils/test_keys.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class IntroPage extends StatefulWidget {
 
   static const routeName = "/IntroPage";
@@ -50,7 +51,7 @@ UserBloc _userBloc;
                 Navigator.pushReplacementNamed(context, ShorterPage.routeName);
               },child: Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: AppText("Skip",key: Key(TestKeys.SKIP_BUTTON_KEY),),
+                child: AppText(LocaleKeys.intro_screen_skip.tr(),key: Key(TestKeys.SKIP_BUTTON_KEY),style: Theme.of(context).textTheme.bodyText1,),
               ))
             ],
           ),

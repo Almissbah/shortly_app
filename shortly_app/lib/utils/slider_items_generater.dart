@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:shortly_app/gen/assets.gen.dart';
+import 'package:shortly_app/generated/locale_keys.g.dart';
 import 'package:shortly_app/ui/widgets/intro_slider_item.dart';
 import 'package:shortly_app/utils/test_keys.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SliderItemsGenerator {
   static var items = [
     SliderItemData(
-        title: "Brand Recognition",
+        title: LocaleKeys.intro_screen_slider_item_1_title.tr(),
         imagePath: Assets.images.diagram,
-        content:
-            "Boost your Recognition with each click. Generic links dont mean a thing, Branded links help instil confidence in your content."),
+        content: LocaleKeys.intro_screen_slider_item_1_content.tr()),
     SliderItemData(
-        title: "Detailed Records",
+        title: LocaleKeys.intro_screen_slider_item_2_title.tr(),
         imagePath: Assets.images.gauge,
-        content:
-            "Gain insights into who is clicking your links, knowing when and where people engage with your content helps inform better decisions. "),
+        content: LocaleKeys.intro_screen_slider_item_2_content.tr()),
     SliderItemData(
-        title: "Fully Customizable",
+        title: LocaleKeys.intro_screen_slider_item_3_title.tr(),
         imagePath: Assets.images.tools,
-        content:
-            "Improve brand awareness and discoverability through customizable links, supercharging audience engagment.")
+        content: LocaleKeys.intro_screen_slider_item_3_content.tr())
   ];
   static List<SliderItemData> getItems() {
     return items;

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shortly_app/data/remote/model/shorten_url_response.dart';
+import 'package:shortly_app/generated/locale_keys.g.dart';
 import 'package:shortly_app/ui/widgets/app_text.dart';
 import 'package:shortly_app/utils/app_colors.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'app_button.dart';
 
 class ShortendUrlWidget extends StatelessWidget {
@@ -49,7 +50,7 @@ class ShortendUrlWidget extends StatelessWidget {
               backgroundColor: isCopied
                   ? AppColors.primaryDarkColor
                   : AppColors.primaryColor,
-              label: isCopied ? "COPIED!" : "COPY",
+              label: isCopied ? LocaleKeys.shorter_screen_copied.tr() : LocaleKeys.shorter_screen_copy.tr(),
               onPressed: () {
                 Clipboard.setData(ClipboardData(text: urlData.fullShortLink));
                 if (onCopy != null) {

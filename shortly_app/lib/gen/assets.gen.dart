@@ -18,10 +18,17 @@ class $AssetsImagesGen {
   String get tools => 'assets/images/tools.svg';
 }
 
+class $AssetsTranslationsGen {
+  const $AssetsTranslationsGen();
+
+  String get en => 'assets/translations/en.json';
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }
 
 class AssetGenImage extends AssetImage {

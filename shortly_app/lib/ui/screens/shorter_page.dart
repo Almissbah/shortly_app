@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shortly_app/bloc/urls/url_bloc.dart';
 import 'package:shortly_app/data/remote/model/shorten_url_response.dart';
 import 'package:shortly_app/gen/assets.gen.dart';
+import 'package:shortly_app/generated/locale_keys.g.dart';
 import 'package:shortly_app/ui/widgets/app_button.dart';
 import 'package:shortly_app/ui/widgets/app_svg_image.dart';
 import 'package:shortly_app/ui/widgets/app_text.dart';
@@ -10,7 +11,7 @@ import 'package:shortly_app/ui/widgets/app_text_field.dart';
 import 'package:shortly_app/ui/widgets/shortened_url_widget.dart';
 import 'package:shortly_app/utils/app_colors.dart';
 import 'package:shortly_app/utils/test_keys.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class ShorterPage extends StatefulWidget {
   static const routeName = "/ShorterPage";
 
@@ -121,7 +122,7 @@ class _ShorterPageState extends State<ShorterPage> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 2),
                 child: AppText(
-                  "Let's get started!",
+                  LocaleKeys.shorter_screen_lets_start.tr(),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline3,
                 ),
@@ -131,7 +132,7 @@ class _ShorterPageState extends State<ShorterPage> {
               child: Container(
                 width: 200,
                 child: AppText(
-                  "Paste your first link into the feild to shorten it",
+                 LocaleKeys.shorter_screen_paste_first_link.tr(),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
@@ -143,7 +144,7 @@ class _ShorterPageState extends State<ShorterPage> {
 
   _buildFooter(BuildContext context) {
     return Container(
-      height: 320,
+      height: 220,
       width: MediaQuery.of(context).size.width,
       color: AppColors.primaryDarkColor,
       child: Stack(
@@ -181,7 +182,7 @@ class _ShorterPageState extends State<ShorterPage> {
                 height: 80,
                 child: AppTextField(
                   key: _textFieldKey,
-                  hint: "Shorten a link here ...",
+                  hint: LocaleKeys.shorter_screen_shorten_link_here.tr(),
                   enabled: !(state is ShortenUrlLoading),
                   controller: _textEditingController,
                 )),
@@ -200,7 +201,7 @@ class _ShorterPageState extends State<ShorterPage> {
                   )
                 : AppButton(
                     key: Key(TestKeys.SHORTEN_IT_KEY),
-                    label: "SHORTEN IT !",
+                    label: LocaleKeys.shorter_screen_shorten_it.tr(),
                     onPressed: () {
                       if (_textFieldKey.currentState.validate())
                         _urlBloc.shortUrl(_textEditingController.text);
@@ -213,7 +214,7 @@ class _ShorterPageState extends State<ShorterPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: AppText(
                           state.msg,
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.center,style: Theme.of(context).textTheme.bodyText2,
                           key: Key(TestKeys.INVALID_URL_ERROR_KEY),
                         ),
                       ),

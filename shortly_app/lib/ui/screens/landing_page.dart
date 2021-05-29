@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shortly_app/bloc/user/user_bloc.dart';
 import 'package:shortly_app/gen/assets.gen.dart';
+import 'package:shortly_app/generated/locale_keys.g.dart';
 import 'package:shortly_app/ui/screens/intro_page.dart';
 import 'package:shortly_app/ui/screens/shorter_page.dart';
 import 'package:shortly_app/ui/widgets/app_button.dart';
 import 'package:shortly_app/ui/widgets/app_svg_image.dart';
 import 'package:shortly_app/ui/widgets/app_text.dart';
 import 'package:shortly_app/utils/test_keys.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class LandingPage extends StatefulWidget {
 
   static const routeName = "/LandingPage";
@@ -83,7 +84,7 @@ class _LandingPageState extends State<LandingPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: AppText(
-                "More than just shorter links",
+                LocaleKeys.landing_screen_title.tr(),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline1,
               ),
@@ -93,7 +94,7 @@ class _LandingPageState extends State<LandingPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
               child: AppText(
-                "Build your brand's recognition and get detailed insights on how your links are performing.",
+                 LocaleKeys.landing_screen_content.tr(),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
@@ -102,7 +103,7 @@ class _LandingPageState extends State<LandingPage> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 30),
             child: AppButton(key: Key(TestKeys.START_BUTTON_KEY),
-              label: "START",
+              label: LocaleKeys.landing_screen_start.tr(),
               onPressed: () {
                 Navigator.pushReplacementNamed(context, IntroPage.routeName);
               },

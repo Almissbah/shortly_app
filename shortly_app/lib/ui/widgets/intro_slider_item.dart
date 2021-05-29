@@ -27,7 +27,7 @@ class IntroSliderItem extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.only(top: 10),
+                padding: const EdgeInsets.all(10),
                 child: AppText(
                   content,
                   textAlign: TextAlign.center,
