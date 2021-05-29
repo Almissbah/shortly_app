@@ -143,7 +143,7 @@ class _ShorterPageState extends State<ShorterPage> {
 
   _buildFooter(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * .25,
+      height: 320,
       width: MediaQuery.of(context).size.width,
       color: AppColors.primaryDarkColor,
       child: Stack(
@@ -153,9 +153,12 @@ class _ShorterPageState extends State<ShorterPage> {
               end: 0,
               top: 0,
               child: AppSvgImage(imagePath: Assets.images.shape)),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            child: _buildFooterContent(),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: _buildFooterContent(),
+            ),
           )
         ],
       ),
