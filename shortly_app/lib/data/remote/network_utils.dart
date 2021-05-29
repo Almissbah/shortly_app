@@ -20,7 +20,6 @@ class RetrofitResponseHandler<T> {
         final res = (error as DioError).response;
 
         resource = _handleResponse(res);
-      } else if (error is TypeError) {
       } else {
         resource = FailureResource<T, HttpError>(
             HttpError(ResponseErrors.ConnectionError, 0),
