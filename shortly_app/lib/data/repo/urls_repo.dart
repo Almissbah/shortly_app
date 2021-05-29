@@ -74,10 +74,15 @@ class MockedUrlsRepo extends UrlsRepository {
 
   @override
   Future<Resource<ShortenUrlResponse>> shortenUrl(ShortenUrlRequest request) {
-    return Future.value(SuccessResource(ShortenUrlResponse(
-        urlData: UrlData(
-            originalLink: request.url,
-            fullShortLink: "shorted" + request.url))));
+    if (request.url == "invalidUrl")
+      return Future.value(FailureResource<ShortenUrlResponse, HttpError>(
+          HttpError(ResponseErrors.ConnectionError, 0),
+          "invalidUrl"));
+    else
+      return Future.value(SuccessResource(ShortenUrlResponse(
+          urlData: UrlData(
+              originalLink: request.url,
+              fullShortLink: "shorted" + request.url))));
   }
 
   @override

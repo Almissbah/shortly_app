@@ -7,17 +7,16 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'di/api_module.dart';
-import 'data/local/prefs/shared_perf_manager.dart';
-import 'data/remote/shortly_api_service.dart';
-import 'di/storage_module.dart';
-import 'bloc/urls/url_bloc.dart';
-import 'data/local/db/urls_dao.dart';
-import 'data/repo/urls_repo.dart';
-import 'bloc/user/user_bloc.dart';
-import 'data/repo/users_repo.dart';
+import 'package:shared_preferences/shared_preferences.dart'; 
+import 'package:shortly_app/di/api_module.dart';
+import 'package:shortly_app/data/local/prefs/shared_perf_manager.dart';
+import 'package:shortly_app/data/remote/shortly_api_service.dart';
+import 'package:shortly_app/di/storage_module.dart';
+import 'package:shortly_app/bloc/urls/url_bloc.dart';
+import 'package:shortly_app/data/local/db/urls_dao.dart';
+import 'package:shortly_app/data/repo/urls_repo.dart';
+import 'package:shortly_app/bloc/user/user_bloc.dart';
+import 'package:shortly_app/data/repo/users_repo.dart';
 
 /// Environment names
 const _prod = 'prod';

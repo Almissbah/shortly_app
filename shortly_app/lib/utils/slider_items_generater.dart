@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:shortly_app/gen/assets.gen.dart';
 import 'package:shortly_app/ui/widgets/intro_slider_item.dart';
+import 'package:shortly_app/utils/test_keys.dart';
 
 class SliderItemsGenerator {
   static var items = [
@@ -24,13 +26,17 @@ class SliderItemsGenerator {
   }
 
   static List<IntroSliderItem> getWidgets() {
-    return items
-        .map((e) => IntroSliderItem(
-              title: e.title,
-              content: e.content,
-              iconPath: e.imagePath,
-            ))
-        .toList();
+    return items.asMap().entries.map((entry) {
+      int idx = entry.key;
+      SliderItemData e = entry.value;
+
+      return IntroSliderItem(
+        key: Key(TestKeys.SLIDER_ITEM_KEY + '$idx'),
+        title: e.title,
+        content: e.content,
+        iconPath: e.imagePath,
+      );
+    }).toList();
   }
 }
 
