@@ -38,17 +38,18 @@ Based on Bloc architecture and dependancy injection to inject real and mocked da
 * **Test** - main_mock.dart : the dependancy injection will be set to Test mode and it will use mocked datasources.
 ### App Specs
 * Developed with Flutter 2.0.6 SDK
-* Dart 
-* Bloc Architecture
+* Dart. 
+* Bloc Architecture.
 * Injectable and GetIT for dependency injection.
 * Prod and Test Enves
 * Retrofit for API integration.
 * Floor Database. 
+* Unit Test, Widget Tests and Test Driver.
 ------ 
 
 ### Run the app
 
-#####  Mocked Mode (No Actual DB or API request)
+#####  Mocked Mode (No Actual DB or API requests)
 flutter run lib/main_mock.dart 
 #####  Debug Mode
 flutter run 
@@ -60,5 +61,5 @@ flutter run --profile
 ### Run App Tests
 #####  Run Widget and Unit Tests
 flutter test
-#####  Run Test Driver (Mocked Env)
+#####  Run Test Driver (Mocked Env) 
 flutter drive --target=test_driver/main.dart
