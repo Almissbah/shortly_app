@@ -35,6 +35,9 @@ dev_dependencies:
   injectable_generator:
   floor_generator:  
   floor_annotation:  
+  test:
+  flutter_driver:
+    sdk: flutter
 
 flutter:
   uses-material-design: true
