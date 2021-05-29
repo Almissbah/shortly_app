@@ -14,12 +14,12 @@ class SliderItemsGenerator {
         title: "Detailed Records",
         imagePath: Assets.images.gauge,
         content:
-            "Boost your Recognition with each click. Generic links dont mean a thing, Branded links help instil confidence in your content."),
+            "Gain insights into who is clicking your links, knowing when and where people engage with your content helps inform better decisions. "),
     SliderItemData(
         title: "Fully Customizable",
         imagePath: Assets.images.tools,
         content:
-            "Boost your Recognition with each click. Generic links dont mean a thing, Branded links help instil confidence in your content.")
+            "Improve brand awareness and discoverability through customizable links, supercharging audience engagment.")
   ];
   static List<SliderItemData> getItems() {
     return items;

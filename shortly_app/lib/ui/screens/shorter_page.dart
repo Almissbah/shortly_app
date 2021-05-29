@@ -21,6 +21,7 @@ class ShorterPage extends StatefulWidget {
 class _ShorterPageState extends State<ShorterPage> {
   UrlBloc _urlBloc;
   TextEditingController _textEditingController = TextEditingController();
+  GlobalKey<AppTextFieldState> _textFieldKey = GlobalKey<AppTextFieldState>();
   String copiedUrl = "";
   @override
   void initState() {
@@ -73,7 +74,8 @@ class _ShorterPageState extends State<ShorterPage> {
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               child: ShortendUrlWidget(
                 key: Key(TestKeys.SHORTENED_URL_KEY + "$index"),
-                deleteButtonKey: Key(TestKeys.SHORTENED_URL_DELETE_KEY + "$index"),
+                deleteButtonKey:
+                    Key(TestKeys.SHORTENED_URL_DELETE_KEY + "$index"),
                 isCopied: copiedUrl == urls[index].fullShortLink,
                 urlData: urls[index],
                 onCopy: (url) {
@@ -160,7 +162,6 @@ class _ShorterPageState extends State<ShorterPage> {
     );
   }
 
-  GlobalKey<AppTextFieldState> _textFieldKey = GlobalKey<AppTextFieldState>();
   Widget _buildFooterContent() {
     return BlocBuilder<UrlBloc, UrlState>(
       builder: (context, state) {
@@ -203,12 +204,16 @@ class _ShorterPageState extends State<ShorterPage> {
                     },
                   ),
             (state is ShortenUrlFailed)
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: AppText(
-                      state.msg,
-                      textAlign: TextAlign.center,
-                      key: Key(TestKeys.INVALID_URL_ERROR_KEY),
+                ? Expanded(
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: AppText(
+                          state.msg,
+                          textAlign: TextAlign.center,
+                          key: Key(TestKeys.INVALID_URL_ERROR_KEY),
+                        ),
+                      ),
                     ),
                   )
                 : Container()
