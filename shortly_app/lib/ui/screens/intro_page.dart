@@ -10,8 +10,10 @@ import 'package:shortly_app/ui/widgets/app_svg_image.dart';
 import 'package:shortly_app/ui/widgets/app_text.dart';
 import 'package:shortly_app/utils/app_colors.dart';
 import 'package:shortly_app/utils/slider_items_generater.dart';
+import 'package:shortly_app/utils/test_keys.dart';
 
 class IntroPage extends StatefulWidget {
+
   static const routeName = "/IntroPage";
 
   @override
@@ -48,7 +50,7 @@ UserBloc _userBloc;
                 Navigator.pushReplacementNamed(context, ShorterPage.routeName);
               },child: Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: AppText("Skip"),
+                child: AppText("Skip",key: Key(TestKeys.SKIP_BUTTON_KEY),),
               ))
             ],
           ),
@@ -62,6 +64,7 @@ UserBloc _userBloc;
       children: [
         Container(width: double.infinity, 
           child: CarouselSlider(
+            key: Key(TestKeys.SLIDER_KEY),
               options: CarouselOptions(
                 height: 400.0,
                 onPageChanged: (index, reason) {

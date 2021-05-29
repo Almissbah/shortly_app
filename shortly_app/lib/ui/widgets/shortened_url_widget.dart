@@ -11,8 +11,9 @@ class ShortendUrlWidget extends StatelessWidget {
   final bool isCopied;
   final Function(String) onCopy;
   final Function(UrlData) onDelete;
+  final Key deleteButtonKey;
   const ShortendUrlWidget(
-      {Key key, this.urlData, this.isCopied, this.onCopy, this.onDelete})
+      {Key key, this.urlData, this.isCopied, this.onCopy, this.onDelete, this.deleteButtonKey})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,7 @@ class ShortendUrlWidget extends StatelessWidget {
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
-                  child: Icon(Icons.delete),
+                  child: Icon(Icons.delete,key: deleteButtonKey,),
                 ))
           ],
         ),

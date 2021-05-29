@@ -7,8 +7,10 @@ import 'package:shortly_app/ui/screens/shorter_page.dart';
 import 'package:shortly_app/ui/widgets/app_button.dart';
 import 'package:shortly_app/ui/widgets/app_svg_image.dart';
 import 'package:shortly_app/ui/widgets/app_text.dart';
+import 'package:shortly_app/utils/test_keys.dart';
 
 class LandingPage extends StatefulWidget {
+
   static const routeName = "/LandingPage";
   LandingPage({Key key, this.title}) : super(key: key);
 
@@ -73,7 +75,7 @@ class _LandingPageState extends State<LandingPage> {
               Container(
                   child: Padding(
                 padding: const EdgeInsetsDirectional.only(top: 20),
-                child: AppSvgImage(imagePath: Assets.images.illustration),
+                child: AppSvgImage(imagePath: Assets.images.illustration,key: Key(TestKeys.LOGO_KEY),),
               )),
             ],
           ),
@@ -99,7 +101,7 @@ class _LandingPageState extends State<LandingPage> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 30),
-            child: AppButton(
+            child: AppButton(key: Key(TestKeys.START_BUTTON_KEY),
               label: "START",
               onPressed: () {
                 Navigator.pushReplacementNamed(context, IntroPage.routeName);

@@ -9,6 +9,7 @@ import 'package:shortly_app/ui/widgets/app_text.dart';
 import 'package:shortly_app/ui/widgets/app_text_field.dart';
 import 'package:shortly_app/ui/widgets/shortened_url_widget.dart';
 import 'package:shortly_app/utils/app_colors.dart';
+import 'package:shortly_app/utils/test_keys.dart';
 
 class ShorterPage extends StatefulWidget {
   static const routeName = "/ShorterPage";
@@ -62,6 +63,7 @@ class _ShorterPageState extends State<ShorterPage> {
 
   Expanded _buildUrlsList(List<UrlData> urls) {
     return Expanded(
+      key: Key(TestKeys.URL_LIST_KEY),
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: ListView.builder(
@@ -70,6 +72,8 @@ class _ShorterPageState extends State<ShorterPage> {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               child: ShortendUrlWidget(
+                key: Key(TestKeys.SHORTENED_URL_KEY + "$index"),
+                deleteButtonKey: Key(TestKeys.SHORTENED_URL_DELETE_KEY + "$index"),
                 isCopied: copiedUrl == urls[index].fullShortLink,
                 urlData: urls[index],
                 onCopy: (url) {
@@ -90,47 +94,49 @@ class _ShorterPageState extends State<ShorterPage> {
 
   Expanded _buildEmptyState(BuildContext context) {
     return Expanded(
+        key: Key(TestKeys.EMPTY_LIST_KEY),
         child: Column(
-      children: [
-        Container(
-            child: Padding(
-          padding: const EdgeInsetsDirectional.only(top: 40),
-          child: AppSvgImage(imagePath: Assets.images.logo),
-        )),
-        Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                  child: Padding(
-                padding: const EdgeInsetsDirectional.only(top: 20),
-                child: AppSvgImage(imagePath: Assets.images.illustration),
-              )),
-            ],
-          ),
-        ),
-        Container(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 2),
-            child: AppText(
-              "Let's get started!",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline3,
+          children: [
+            Container(
+                child: Padding(
+              padding: const EdgeInsetsDirectional.only(top: 40),
+              child: AppSvgImage(imagePath: Assets.images.logo),
+            )),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      child: Padding(
+                    padding: const EdgeInsetsDirectional.only(top: 20),
+                    child: AppSvgImage(imagePath: Assets.images.illustration),
+                  )),
+                ],
+              ),
             ),
-          ),
-        ),
-        Expanded(
-          child: Container(
-            width: 200,
-            child: AppText(
-              "Paste your first link into the feild to shorten it",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyText1,
+            Container(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 2),
+                child: AppText(
+                  "Let's get started!",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+              ),
             ),
-          ),
-        ),
-      ],
-    ));
+            Expanded(
+              child: Container(
+                width: 200,
+                child: AppText(
+                  "Paste your first link into the feild to shorten it",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 
   _buildFooter(BuildContext context) {
@@ -161,6 +167,7 @@ class _ShorterPageState extends State<ShorterPage> {
         if (state is ShortenedUrlsList) {
           _textEditingController.clear();
         } else if (state is ShortenUrlFailed) {}
+
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -188,6 +195,7 @@ class _ShorterPageState extends State<ShorterPage> {
                     ),
                   )
                 : AppButton(
+                    key: Key(TestKeys.SHORTEN_IT_KEY),
                     label: "SHORTEN IT !",
                     onPressed: () {
                       if (_textFieldKey.currentState.validate())
@@ -197,7 +205,11 @@ class _ShorterPageState extends State<ShorterPage> {
             (state is ShortenUrlFailed)
                 ? Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: AppText(state.msg,textAlign: TextAlign.center,),
+                    child: AppText(
+                      state.msg,
+                      textAlign: TextAlign.center,
+                      key: Key(TestKeys.INVALID_URL_ERROR_KEY),
+                    ),
                   )
                 : Container()
           ],
