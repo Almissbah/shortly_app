@@ -1,12 +1,17 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import 'package:shortly_app/ui/widgets/app_svg_image.dart';
 import 'package:shortly_app/ui/widgets/app_text.dart';
 import 'package:shortly_app/utils/app_colors.dart';
 
 class IntroSliderItem extends StatelessWidget {
-  final String title,content,iconPath;
+  final String title, content, iconPath;
 
-  const IntroSliderItem({Key key, @required this.title, @required this.content, @required this.iconPath}) : super(key: key);
+  const IntroSliderItem(
+      {Key key,
+      @required this.title,
+      @required this.content,
+      @required this.iconPath})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,15 +25,15 @@ class IntroSliderItem extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline3,
-              ), 
+              ),
               Padding(
-                padding: const EdgeInsetsDirectional.only(top:10),
+                padding: const EdgeInsetsDirectional.only(top: 10),
                 child: AppText(
                   content,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-              ), 
+              ),
             ],
           )),
           _buildIcon(),
@@ -60,13 +65,15 @@ class IntroSliderItem extends StatelessWidget {
         right: 0,
         top: 0,
         child: Center(
-          child: CircleAvatar(
-            backgroundColor: AppColors.primaryDarkColor,
-            maxRadius: 40,
-            child: AppSvgImage(
-              imagePath: iconPath,
-            ),
-          ),
+          child: (iconPath != null && iconPath.isNotEmpty)
+              ? CircleAvatar(
+                  backgroundColor: AppColors.primaryDarkColor,
+                  maxRadius: 40,
+                  child: AppSvgImage(
+                    imagePath: iconPath,
+                  ),
+                )
+              : Container(),
         ));
   }
 }
